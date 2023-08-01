@@ -1,0 +1,40 @@
+Shell Script Kurma
+
+
+Shell script kodunuzu .sh uzantılı dosyanın içine kaydediyoruz.
+
+sudo chmod +x dosyaadı.sh    shell script dosyasının çalışması için execute yetkisini verin.
+
+
+.service uzantılı servis birim dosyasını /lib/systemd/system klasöründe içinde oluşturuyoruz.
+
+sudo nano /lib/systemd/system/servicedosyaadı.service kodu ile dosyanın içine 
+
+
+[Unit]
+Description=My Shell Script
+
+[Service]
+ExecStart=/usr/bin/script.sh
+
+[Install]
+WantedBy=multi-user.target 
+
+
+kodunu yazıyoruz.
+
+
+
+
+sudo systemctl daemon-reload  kodu ile   .serviceteki kodu sisteme yüklüyor. .service uzantılı dosyadaki değişikliklerden 
+sonra sisteme yeninden yüklenilmesi için bu kodun kullanılması gerekmektedir.
+
+
+sudo systemctl enable shellscript.service
+Bu komut sayesinde servimizi aktif ediyoruz.
+ 
+sudo systemctl start shellscript.service 
+Burada ise servisimizi başlatıyoruz.
+
+sudo systemctl status shellscript.service
+Servisimizin durumunu kontrol ediyoruz.
